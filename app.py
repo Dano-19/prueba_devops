@@ -37,7 +37,7 @@ def hello():
     <body>
         <div class="container">
             <!-- TÍTULO -->
-            <h1>Bienvenido a mi Proyecto</h1>
+            <h1>hola estrellitas </h1>
             
             <!-- SUBTÍTULO -->
             <h2>Prueba de Daniela Alexandra Cárdenas Maldonado</h2>
