@@ -79,4 +79,21 @@ jobs:
         password: ${{ secrets.VPS_PASSWORD }}
         port: ${{ secrets.VPS_SSH_PORT }}
         script: |
-          echo "desplegando servicios"
+          #echo "desplegando servicios"
+          cd /home/1727513135/despliegue
+          cd ~/despliegue
+
+          # paso 1 descargar la imagen
+          #echo "descargando la imagen del GHCR"
+          echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u dano-19 --password-stdir
+          docker pull ghcr.io/dano-19/maldonado:1.0.5
+
+          # paso 2 borrar el stack
+          #echo "borrar el stack siempre"
+          docker stack rm maldonado || true 
+
+          sleep 30
+
+          # despliegue de los servicios
+          #echo "despliegue stack"
+          docker stack deploy -c stack.yml --with-registry-auth maldonado
